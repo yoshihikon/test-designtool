@@ -71,17 +71,12 @@ QUALITY REQUIREMENTS:
 - Make screens look complete and production-ready with realistic content`
 
 export async function generateDesignSpec(
-  requirements: string,
-  apiKey: string,
-  onStatus?: (msg: string) => void
+  requirements: string
 ): Promise<DesignSpec> {
-  onStatus?.('AIが要件を分析しています...')
-
   const response = await fetch('/api/claude', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      apiKey,
       model: 'claude-sonnet-4-6',
       maxTokens: 8000,
       system: SYSTEM_PROMPT,

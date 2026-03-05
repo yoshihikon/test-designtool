@@ -14,11 +14,11 @@ export default function App() {
   const [error, setError] = useState<string | null>(null)
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false)
 
-  const handleGenerate = async (requirements: string, apiKey: string) => {
+  const handleGenerate = async (requirements: string) => {
     setError(null)
     setPhase('generating')
     try {
-      const result = await generateDesignSpec(requirements, apiKey)
+      const result = await generateDesignSpec(requirements)
       setSpec(result)
       setView({ type: 'screen-flow' })
       setPhase('ready')
